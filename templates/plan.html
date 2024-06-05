@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESB Healthcare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <style>
+      /* Reset some default styles */
+      body, h1, h2, form, input, pre, footer {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+      }
+    </style>
+</head>
+<body>
+  <nav class="navtop">
+    <div>
+      <h1>ESB Healthcare - Care plan Generator</h1>
+        <a href="/"><i class="fas fa-home"></i>Home</a>
+      <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+      <a href="{{ url_for('login') }}"><i class="fas fa-sign-out-alt"></i>Login</a>
+    </div>
+  </nav>
+    <div class="container">
+      <h2>Care Plan Generator</h2>
+      <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required />
+        <input type="submit" value="Analyze" />
+      </form>
+      {% if response %}
+      <pre>{{ response }}</pre>
+      {% endif %}
+    </div>
+    <footer>
+      <div class="footer-left">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="ESB Healthcare Logo" class="footer-logo">
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="https://www.esbhealthcare.com" target="_blank">Visit our website</a>
+          <a href="mailto:info@esbhealthcare.com">Get in touch with us</a>
+          <a href="/">Demo</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

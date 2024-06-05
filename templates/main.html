@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESB Healthcare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navtop">
+        <div>
+          <h1>ESB Healthcare - Demo</h1>
+            <a href="/"><i class="fas fa-home"></i>Home</a>
+          <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+          <a href="{{ url_for('login') }}"><i class="fas fa-sign-out-alt"></i>Login</a>
+        </div>
+      </nav>
+    <div class="container">
+        <h1>ESB Healthcare - Product demo</h1>
+        <a href="/chat" class="button">Chat with the Bot</a>
+        <a href="/get_care_plan" class="button">Create a Care Plan from file</a>
+        <a href="/plangen" class="button">Create a Care Plan from text</a>
+        <a href="/learn" class="button">Train staff members</a>
+    </div>
+    <footer>
+        <div class="footer-left">
+          <img src="{{ url_for('static', filename='logo.png') }}" alt="ESB Healthcare Logo" class="footer-logo">
+        </div>
+        <div class="footer-right">
+          <div class="footer-links">
+            <a href="https://www.esbhealthcare.com" target="_blank">Visit Our Website</a>
+            <a href="mailto:info@esbhealthcare.com">Get in Touch with Us</a>
+          </div>
+        </div>
+    </footer>
+</body>
+</html>

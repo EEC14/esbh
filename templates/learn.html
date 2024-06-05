@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESB Healthcare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="text"], button[type="submit"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navtop">
+        <div>
+          <h1>ESB Healthcare - Demo</h1>
+            <a href="/"><i class="fas fa-home"></i>Home</a>
+          <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+          <a href="{{ url_for('login') }}"><i class="fas fa-sign-out-alt"></i>Login</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Student Quiz App</h1>
+        <h2>Generate Questions</h2>
+        <form action="/generate_questions" method="post">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+            <button type="submit">Generate Questions</button>
+        </form>
+        {% if questions %}
+        <h2>Generated Questions</h2>
+        <form action="/analyze_answers" method="post">
+            <ul>
+            {% for question in questions %}
+                <li>{{ question }}<br>
+                    <label for="answer{{ loop.index }}">Your Answer:</label>
+                    <input type="text" id="answer{{ loop.index }}" name="answers" required><br>
+                    <input type="hidden" name="questions" value="{{ question }}">
+                </li>
+            {% endfor %}
+            </ul>
+            <button type="submit">Analyze Answers</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+<footer>
+    <div class="footer-left">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="ESB Healthcare Logo" class="footer-logo">
+    </div>
+    <div class="footer-right">
+      <div class="footer-links">
+        <a href="https://www.esbhealthcare.com" target="_blank">Visit Our Website</a>
+        <a href="mailto:info@esbhealthcare.com">Get in Touch with Us</a>
+      </div>
+    </div>
+   </footer>
+</html>

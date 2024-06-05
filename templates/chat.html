@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>ESB Healthcare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+<body>
+    <nav class="navtop">
+        <div>
+          <h1>ESB Healthcare - Home</h1>
+                  <a href="/"><i class="fas fa-home"></i>Home</a>
+          <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+          <a href="{{ url_for('login') }}"><i class="fas fa-sign-out-alt"></i>Login</a>
+        </div>
+      </nav>
+    <div class="container">
+        {% block content %}
+        <h1 class="title">ESB Healthcare - Telehealth</h1>
+        <form action="/" method="post" class="form">
+            <label for="textbox" class="form-label">Enter your question:</label>
+            <textarea id="textbox" name="textbox" rows="3" class="form-textarea" placeholder="Type your question here..."></textarea>
+            <input type="submit" value="Submit" class="form-submit">
+        </form>
+        {% if submitted_text %}
+        <div class="response">
+            <p class="response-text">Your question: {{ submitted_text }}</p>
+            <p class="response-answer">Answer: {{ message }}</p>
+        </div>
+        {% endif %}
+        <div id="history" class="history">
+            {% for question, answer in message %}
+            <div class="history-item">
+                <p class="history-question">Q: {{ question }}</p>
+                <p class="history-answer">A: {{ answer }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endblock %}
+    </div>
+    <footer>
+        <div class="footer-left">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="ESB Healthcare Logo" class="footer-logo">
+        </div>
+        <div class="footer-right">
+            <div class="footer-links">
+                <a href="https://www.esbhealthcare.com" target="_blank">Visit our website</a>
+                <a href="mailto:info@esbhealthcare.com">Get in touch with us</a>
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="/get_care_plan">Create a care plan</a>
+
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESB Healthcare</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+
+<body>
+  <nav class="navtop">
+    <div>
+      <h1>ESB Healthcare - Home</h1>
+              <a href="/"><i class="fas fa-home"></i>Home</a>
+      <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+      <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+    </div>
+  </nav>
+    <div class="container">
+        <h2 class="title">ESB Healthcare - Admin page</h2>
+        <div class="clearfix">
+          <div class="column">
+            {% block content %}
+            <h3>Manage Urgent cases</h3>
+            <p>Number of urgent cases registered: {{ urgent }}</p> 
+            {% endblock %}
+          </div>
+          <div class="column">
+            <h3>View your appointments</h3>
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FZurich&bgcolor=%23ffffff&src=ZXJpYzE0MTQyM0BnbWFpbC5jb20&src=dGcwa21lMmJlZGs2aG1ybGtvNzloMTZoOThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=NDRmOTg4OGQ5ZWJlNmQ1ZGM3NTc5ZGExZDE1YTE1YTJjMzMyZmZiODkyNGQ5NTU2ZTQ1ZGMxZWE4MTEwODkwMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=dnY0azE5c2Vyc2pmaGZqYzZvNmcwNTI0bGNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=Y2NkMTUyNjkwMmQyNzVlOWNmOTE0YTQ1NzU4MmI3YTA3YWZmODBhNTI1MmQ1OTJmNDhmZmY3MWI2MzcwNGE4NkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=NWNjNzc4NGE4ODVjYjJjMDhiMDFkM2I2OWM2ZmMyZjZmYmEwZDExMWUzMWNlY2U2ZjMzY2VkZTRkNzdhZDQ0OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZXJpY2VzcG9zaXRvY29ybmVsaW8xNEBnbWFpbC5jb20&color=%237986CB&color=%23000000&color=%23795548&color=%23E4C441&color=%23AD1457&color=%23D50000&color=%23F4511E" style="border:solid 1px #777" width=100% height="600" frameborder="0" scrolling="no"></iframe>
+          </div>
+          <div class="column">
+            <h3>Manage your account</h3>
+            <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>View your profile</a>
+          </div>
+        </div>
+    </div>
+  <footer>
+    <div class="footer-left">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="ESB Healthcare Logo" class="footer-logo">
+    </div>
+    <div class="footer-right">
+      <div class="footer-links">
+        <a href="https://www.esbhealthcare.com" target="_blank">Visit our website</a>
+        <a href="mailto:info@esbhealthcare.com">Get in touch with us</a>
+        <a href="/">Demo</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
